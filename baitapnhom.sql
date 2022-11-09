@@ -294,6 +294,125 @@ go
 
 
 
+----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+
+
+alter table CHUNGCHI
+add constraint FK_CHUNGCHI_VS_CN_VS_DN_covon
+foreign key (MaKH)
+references CN_VS_DN_covon(MaKH)
+go
+
+-- Tạo khóa ngoại FK_CHINHANH_VS_DV_THANHTOANQUATK
+alter table DV_THANHTOANQUATK
+add constraint FK_CHINHANH_VS_DV_THANHTOANQUATK
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+--  Tạo khóa ngoại FK_CHINHANH_VS_CHUNGCHI
+alter table CHUNGCHI
+add constraint FK_CHINHANH_VS_CHUNGCHI
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+--  Tạo khóa ngoại FK_CHINHANH_VS_GIAODICH
+alter table GIAODICH
+add constraint FK_CHINHANH_VS_GIAODICH
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+
+--  Tạo khóa ngoại FK_CHINHANH_VS_KHOANVAY
+alter table KHOANVAY
+add constraint FK_CHINHANH_VS_KHOANVAY
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+--  Tạo khóa ngoại FK_CHINHANH_VS_KHOANGUI
+alter table KHOANGUI
+add constraint FK_CHINHANH_VS_KHOANGUI
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+--  Tạo khóa ngoại FK_CHINHANH_VS_TAIKHOAN
+alter table TAIKHOAN
+add constraint FK_CHINHANH_VS_TAIKHOAN
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+--  Tạo khóa ngoại FK_CHINHANH_VS_HOIPHIEU
+alter table HOIPHIEU
+add constraint FK_CHINHANH_VS_HOIPHIEU
+foreign key (MaCN)
+references CHINHANH(MaCN)
+go
+
+
+
+--  Tạo khóa ngoại FK_KHACHHANG_VS_KHOANVAY
+alter table KHOANVAY
+add constraint FK_KHACHHANG_VS_KHOANVAY
+foreign key (MaKH)
+references KHACHHANG(MaKH)
+go
+
+--  Tạo khóa ngoại FK_KHACHHANG_VS_KHOANGUI
+alter table KHOANGUI
+add constraint FK_KHACHHANG_VS_KHOANGUI
+foreign key (MaKH)
+references KHACHHANG(MaKH)
+go
+
+--  Tạo khóa ngoại FK_KHACHHANG_VS_TAIKHOAN
+alter table TAIKHOAN
+add constraint FK_KHACHHANG_VS_TAIKHOAN
+foreign key (MaKH)
+references KHACHHANG(MaKH)
+go
+
+--  Tạo khóa ngoại FK_KHACHHANG_VS_DV_THANHTOANQUATK
+alter table DV_THANHTOANQUATK
+add constraint FK_KHACHHANG_VS_DV_THANHTOANQUATK
+foreign key (MaKH)
+references KHACHHANG(MaKH)
+go
+
+
+--  Tạo khóa ngoại FK_TAIKHOAN_VS_THETD
+alter table THETD
+add constraint FK_TAIKHOAN_VS_THETD
+foreign key (MaTK)
+references TAIKHOAN(MaTK)
+go
+
+--  Tạo khóa ngoại FK_TAIKHOAN_VS_THEGN
+alter table THEGN
+add constraint FK_TAIKHOAN_VS_THEGN
+foreign key (MaTK)
+references TAIKHOAN(MaTK)
+go
+
+--  Tạo khóa ngoại FK_CTY_VS_HOIPHIEU
+alter table HOIPHIEU
+add constraint FK_CTY_VS_HOIPHIEU
+foreign key (MaCT)
+references CTY(MaCT)
+go
+
+--  Tạo khóa ngoại FK_DICHVUTHANHTOAN_VS_DV_THANHTOANQUATK
+alter table DV_THANHTOANQUATK
+add constraint FK_DICHVUTHANHTOAN_VS_DV_THANHTOANQUATK
+foreign key (MaDV)
+references DICHVUTHANHTOAN(MaDV)
+go
+
 
 
 
