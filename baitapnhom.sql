@@ -578,6 +578,161 @@ VALUES ('298TT036','TT036','298M26','MB298CG')
 
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-- Tạo table CHINHANH
+create table CHINHANH
+( 
+  MaCN varchar(10) primary key,
+  TenCN nvarchar(100) not null,
+  Taisan nvarchar(20),
+  Diachi nvarchar(200)
+)
+go
+
+-- Tạo table KHACHHANG
+create table KHACHHANG
+(
+ MaKH varchar(10) primary key,
+ TenKH nvarchar(50) not null,
+ SDT nvarchar(20),
+ Diachi nvarchar(200)
+)
+go
+
+-- Tạo bảng CHUNGCHI
+create table CHUNGCHI
+(
+  SoSR nvarchar(20) primary key,
+  TenChungChi nvarchar(50) not null,
+  NgayPH datetime,
+  MaKH varchar(10),
+  Laisuat nvarchar(10),
+  Thoihan nvarchar(10),
+  MaCN  varchar(10),
+)
+go
+
+-- Tạo bảng GIAODICH
+create table GIAODICH
+(
+ MaGD varchar(10) primary key,
+ LoaiGD nvarchar(50) not null,
+ NgayGD datetime,
+ NguoiGD nvarchar(100),
+ SotienGD nvarchar(20),
+ MaCN varchar(10),
+)
+go
+
+-- Tạo table CN_&_DN_covon
+create table CN_VS_DN_covon
+( 
+ MaKH varchar(10) primary key,
+ TenKH nvarchar(50) not null,
+ TgGiaoDich datetime,
+ MaGD varchar(10) not null,
+)
+go
+
+-- tạo bảng KHOANVAY
+create table KHOANVAY
+(
+ MaKV varchar(10) primary key,
+ LoaiVay nvarchar(50) not null,
+ Ngayvay datetime,
+ Laisuat nvarchar(10),
+ MaKH varchar(10) not null,
+ MaCN varchar(10) not null,
+)
+go
+
+-- tạo bảng KHOANGUI
+create table KHOANGUI
+(
+ MaKG varchar(10) primary key,
+ LoaiGui nvarchar(50) not null,
+ Ngaygui datetime,
+ Laisuat nvarchar(10),
+ MaKH varchar(10) not null,
+ MaCN varchar(10) not null,
+)
+go
+
+-- tạo bảng TAIKHOAN
+create table TAIKHOAN
+(
+  MaTK varchar(20) primary key,
+  NgayMo datetime,
+  SoDuTK nvarchar(20),
+  MaKH varchar(10) not null,
+  MaCN varchar(10) not  null,
+)
+go
+
+-- tạo bảng THETD
+create table THETD
+(
+  MatheTD varchar(20) primary key,
+  Thoihan nvarchar(5),
+  MaCVV nvarchar(20),
+  MaTK varchar(20) not null,
+)
+go
+
+-- Tạo bảng THEGN
+create table THEGN
+(
+  MatheGN varchar(20) primary key,
+  Thoihan nvarchar(10),
+  MaCVV nvarchar(20),
+  MaTK varchar(20) not null,
+  Loaithe nvarchar(20),
+)
+go
+
+-- tạo bảng HOIPHIEU
+create table HOIPHIEU
+(
+  MaHP varchar(20) primary key,
+  TenHP nvarchar(50) not null,
+  TenCTphathanh nvarchar(50) not null,
+  NgayPH datetime,
+  NgayDH datetime,
+  MaCT varchar(10) not null,
+  MaCN varchar(10) not null,
+)
+go
+
+-- tạo bảng CTY
+create table CTY
+(
+  MaCT varchar(10) primary key,
+  TenCT nvarchar(100) not null,
+  Diachi nvarchar(200)
+)
+go
+
+-- tạo bảng DICHVUTHANHTOAN
+create table DICHVUTHANHTOAN
+(
+ MaDV varchar(10) primary key,
+ TenDV nvarchar(100) not null,
+ NgayPS_Dichvu datetime,
+)
+go
+
+-- tạo bảng DVTHANHTOANQUATK
+create table DV_THANHTOANQUATK
+(
+ MaLuotDV nvarchar(20) primary key,
+ MaDV varchar(10) not null,
+ MaKH varchar(10) not null,
+ MaCN varchar(10) not null,
+)
+go
 
 
 
