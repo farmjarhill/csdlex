@@ -6,6 +6,8 @@ go
 /*tạo các table */
 use QL_Ngan_Hang_Thuong_Mai
 go
+
+
 -- Tạo table CHINHANH
 create table CHINHANH
 ( 
@@ -33,8 +35,8 @@ create table CHUNGCHI
   TenChungChi nvarchar(50) not null,
   NgayPH datetime,
   MaKH varchar(10),
-  Laisuat varchar(10),
-  Thoihan datetime,
+  Laisuat nvarchar(10),
+  Thoihan nvarchar(10),
   MaCN  varchar(10),
 )
 go
@@ -46,7 +48,7 @@ create table GIAODICH
  LoaiGD nvarchar(50) not null,
  NgayGD datetime,
  NguoiGD nvarchar(100),
- SotienGD int,
+ SotienGD nvarchar(20),
  MaCN varchar(10),
 )
 go
@@ -90,7 +92,7 @@ create table TAIKHOAN
 (
   MaTK varchar(20) primary key,
   NgayMo datetime,
-  SoDuTK int,
+  SoDuTK nvarchar(20),
   MaKH varchar(10) not null,
   MaCN varchar(10) not  null,
 )
@@ -100,7 +102,7 @@ go
 create table THETD
 (
   MatheTD varchar(20) primary key,
-  Thoihan datetime,
+  Thoihan nvarchar(5),
   MaCVV nvarchar(20),
   MaTK varchar(20) not null,
 )
@@ -110,7 +112,7 @@ go
 create table THEGN
 (
   MatheGN varchar(20) primary key,
-  Thoihan datetime,
+  Thoihan nvarchar(10),
   MaCVV nvarchar(20),
   MaTK varchar(20) not null,
   Loaithe nvarchar(20),
@@ -156,140 +158,6 @@ create table DV_THANHTOANQUATK
  MaKH varchar(10) not null,
  MaCN varchar(10) not null,
 )
-go
-
----------------------------------------------------------------------------
-
-/* tạo khóa ngoại */
-use QL_Ngan_Hang_Thuong_Mai
-go
--- Tạo khóa ngoại FK_CHINHANH_VS_DV_THANHTOANQUATK
-alter table DV_THANHTOANQUATK
-add constraint FK_CHINHANH_VS_DV_THANHTOANQUATK
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
---  Tạo khóa ngoại FK_CHINHANH_VS_CHUNGCHI
-alter table CHUNGCHI
-add constraint FK_CHINHANH_VS_CHUNGCHI
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
---  Tạo khóa ngoại FK_CHINHANH_VS_GIAODICH
-alter table GIAODICH
-add constraint FK_CHINHANH_VS_GIAODICH
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
-
---  Tạo khóa ngoại FK_CHINHANH_VS_KHOANVAY
-alter table KHOANVAY
-add constraint FK_CHINHANH_VS_KHOANVAY
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
---  Tạo khóa ngoại FK_CHINHANH_VS_KHOANGUI
-alter table KHOANGUI
-add constraint FK_CHINHANH_VS_KHOANGUI
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
---  Tạo khóa ngoại FK_CHINHANH_VS_TAIKHOAN
-alter table TAIKHOAN
-add constraint FK_CHINHANH_VS_TAIKHOAN
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
---  Tạo khóa ngoại FK_CHINHANH_VS_HOIPHIEU
-alter table HOIPHIEU
-add constraint FK_CHINHANH_VS_HOIPHIEU
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
-
---  Tạo khóa ngoại FK_KHACHHANG_VS_CHUNGCHI
-alter table CHUNGCHI
-add constraint FK_KHACHHANG_VS_CHUNGCHI
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
-
---  Tạo khóa ngoại FK_KHACHHANG_VS_CN_VS_DN_covon
-alter table CN_VS_DN_covon
-add constraint FK_KHACHHANG_VS_CN_VS_DN_covon
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
-
-
---  Tạo khóa ngoại FK_KHACHHANG_VS_KHOANVAY
-alter table KHOANVAY
-add constraint FK_KHACHHANG_VS_KHOANVAY
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
-
---  Tạo khóa ngoại FK_KHACHHANG_VS_KHOANGUI
-alter table KHOANGUI
-add constraint FK_KHACHHANG_VS_KHOANGUI
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
-
---  Tạo khóa ngoại FK_KHACHHANG_VS_TAIKHOAN
-alter table TAIKHOAN
-add constraint FK_KHACHHANG_VS_TAIKHOAN
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
-
---  Tạo khóa ngoại FK_KHACHHANG_VS_DV_THANHTOANQUATK
-alter table DV_THANHTOANQUATK
-add constraint FK_KHACHHANG_VS_DV_THANHTOANQUATK
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
-
---  Tạo khóa ngoại FK_GIAODICH_VS_CN_VS_DN_covon
-alter table CN_VS_DN_covon
-add constraint FK_GIAODICH_VS_CN_VS_DN_covon
-foreign key (MaGD)
-references GIAODICH(MaGD)
-go
-
-
---  Tạo khóa ngoại FK_TAIKHOAN_VS_THETD
-alter table THETD
-add constraint FK_TAIKHOAN_VS_THETD
-foreign key (MaTK)
-references TAIKHOAN(MaTK)
-go
-
---  Tạo khóa ngoại FK_TAIKHOAN_VS_THEGN
-alter table THEGN
-add constraint FK_TAIKHOAN_VS_THEGN
-foreign key (MaTK)
-references TAIKHOAN(MaTK)
-go
-
---  Tạo khóa ngoại FK_CTY_VS_HOIPHIEU
-alter table HOIPHIEU
-add constraint FK_CTY_VS_HOIPHIEU
-foreign key (MaCT)
-references CTY(MaCT)
-go
-
---  Tạo khóa ngoại FK_DICHVUTHANHTOAN_VS_DV_THANHTOANQUATK
-alter table DV_THANHTOANQUATK
-add constraint FK_DICHVUTHANHTOAN_VS_DV_THANHTOANQUATK
-foreign key (MaDV)
-references DICHVUTHANHTOAN(MaDV)
 go
 
 
